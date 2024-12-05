@@ -110,21 +110,29 @@ const ProductList = () => {
       
       {/* Loading Spinner */}
       {loading ? (
-       <div className="flex justify-center items-center mt-10 space-x-2">
-       <div className="w-4 h-4 bg-blue-500 rounded-full animate-bounce"></div>
-       <div className="w-4 h-4 bg-blue-500 rounded-full animate-bounce200"></div>
-       <div className="w-4 h-4 bg-blue-500 rounded-full animate-bounce400"></div>
-     </div>
-      ) : (
-        <>
-          {/* Product Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6">
-            {currentProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+  <div className="flex justify-center items-center mt-10 space-x-2">
+    <div className="w-4 h-4 bg-blue-500 rounded-full animate-bounce"></div>
+    <div className="w-4 h-4 bg-blue-500 rounded-full animate-bounce200"></div>
+    <div className="w-4 h-4 bg-blue-500 rounded-full animate-bounce400"></div>
+  </div>
+) : (
+  <>
+    {filteredProducts.length === 0 ? (
+      // No records message
+      <div className="text-center text-gray-500 mt-10">
+        No records found. Please try a different search or filter.
+      </div>
+    ) : (
+      <>
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6">
+          {currentProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
 
-          {/* Pagination Controls */}
+        {/* Pagination Controls */}
+        {filteredProducts.length > 0 && (
           <div className="flex flex-wrap justify-center items-center mt-8 space-x-2">
             <button
               onClick={() => paginate(currentPage - 1)}
@@ -137,7 +145,11 @@ const ProductList = () => {
               <button
                 key={index}
                 onClick={() => paginate(index + 1)}
-                className={`px-4 py-2 transition ${currentPage === index + 1 ? "MainPageColor text-white" : "bg-gray-300 text-gray-700"}`}
+                className={`px-4 py-2 transition ${
+                  currentPage === index + 1
+                    ? "MainPageColor text-white"
+                    : "bg-gray-300 text-gray-700"
+                }`}
               >
                 {index + 1}
               </button>
@@ -150,6 +162,10 @@ const ProductList = () => {
               Next
             </button>
           </div>
+        )}
+      </>
+    )}
+
         </>
       )}
     </div>
