@@ -41,7 +41,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-green-500 to-teal-600">
+    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-blue-500 to-purple-600">
       <form
         onSubmit={handleRegister}
         className="w-full max-w-md bg-white rounded-lg shadow-lg p-8 space-y-6"
@@ -78,14 +78,14 @@ const Register = () => {
         />
         <button
           type="submit"
-          className="w-full bg-green-500 text-white font-bold py-2 rounded-lg hover:bg-green-600 transition duration-300"
+          className="w-full MainPageColor text-white font-bold py-2 rounded-lg hover:bg-blue-600 transition duration-300"
         >
           Register
         </button>
         <p className="text-sm text-center text-gray-600">
           Already have an account?{" "}
           <span
-            className="text-green-500 cursor-pointer"
+            className="text-blue-500 cursor-pointer"
             onClick={() => navigate("/login")}
           >
             Login here

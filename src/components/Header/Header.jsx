@@ -12,11 +12,6 @@ const Header = () => {
     navigate("/login");
   };
 
-  // React.useEffect(() => {
-  //   console.log("items", JSON.parse(localStorage.getItem("cart")));
-  //   let totalCart = JSON.parse(localStorage.getItem("cart"));
-  //   setCount(totalCart ? totalCart.length : 0); // Ensure there's no error if cart is null
-  // }, []);
   React.useEffect(() => {
     const updateCartCount = () => {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];

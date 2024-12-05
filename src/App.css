@@ -1,10 +1,23 @@
 .MainPageColor{
   background-color: rgb(0 29 93);
 }
+
+
+
+.to-purple-600 {
+  --tw-gradient-to: #133E87 var(--tw-gradient-to-position);
+}
+.from-blue-500 {
+  --tw-gradient-from: #608BC1 var(--tw-gradient-from-position);
+  
+}
 .cartCount{
   display: inline;
     padding: 5px;
     margin-left: 3px;
+}
+.to-teal-600, .to-purple-600 {
+  max-height: calc(100vh - 116px) !important
 }
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }

@@ -15,7 +15,7 @@ const App = () => {
         <Header />
 
         {/* Main Content */}
-        <main className="flex-grow bg-gray-100 py-6">
+        <main className="flex-grow bg-gray-100">
           <Routes>
             <Route path="/" element={<ProductPage />} />
             <Route path="/products" element={<ProductPage />} />
