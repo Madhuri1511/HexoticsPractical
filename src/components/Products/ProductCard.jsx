@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
           confirm: {
             text: "Login",
             visible: true,
-            className: "swal-button-confirm",
+            className: "swal-button-confirm MainPageColor",
           },
         },
       }).then((willLogin) => {
@@ -65,7 +65,7 @@ const ProductCard = ({ product }) => {
       buttons: {
         confirm: {
           text: "OK",
-          className: "swal-button-ok",
+          className: "swal-button-ok MainPageColor",
         },
       },
     });
