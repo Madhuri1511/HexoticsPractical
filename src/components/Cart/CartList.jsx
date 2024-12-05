@@ -8,12 +8,14 @@ const CartList = () => {
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(storedCart);
+    window.dispatchEvent(new Event('storage'));
   }, []);
 
   const handleRemove = (id) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    window.dispatchEvent(new Event('storage')); 
   };
 
   const handleQuantityChange = (id, delta) => {
@@ -22,6 +24,7 @@ const CartList = () => {
     );
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    window.dispatchEvent(new Event('storage')); 
   };
 
   return (

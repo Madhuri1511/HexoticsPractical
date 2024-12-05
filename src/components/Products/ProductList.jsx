@@ -137,7 +137,7 @@ const ProductList = () => {
               <button
                 key={index}
                 onClick={() => paginate(index + 1)}
-                className={`px-4 py-2 transition ${currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-700"}`}
+                className={`px-4 py-2 transition ${currentPage === index + 1 ? "MainPageColor text-white" : "bg-gray-300 text-gray-700"}`}
               >
                 {index + 1}
               </button>

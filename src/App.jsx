@@ -5,7 +5,9 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import "../src/App.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
 const App = () => {
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
@@ -24,7 +26,7 @@ const App = () => {
         </main>
 
         {/* Footer */}
-        <footer className="bg-blue-600 text-white text-center py-4">
+        <footer className="MainPageColor text-white text-center py-4">
           <p>© 2024 Product Management System. All rights reserved.</p>
         </footer>
       </div>

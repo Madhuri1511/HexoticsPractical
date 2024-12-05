@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -11,10 +12,34 @@ const Header = () => {
     navigate("/login");
   };
 
+  // React.useEffect(() => {
+  //   console.log("items", JSON.parse(localStorage.getItem("cart")));
+  //   let totalCart = JSON.parse(localStorage.getItem("cart"));
+  //   setCount(totalCart ? totalCart.length : 0); // Ensure there's no error if cart is null
+  // }, []);
+  React.useEffect(() => {
+    const updateCartCount = () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      setCount(cart.length);
+    };
+
+    // Initial load
+    updateCartCount();
+
+    // Listen for changes in localStorage (triggered when items are added/removed)
+    window.addEventListener('storage', updateCartCount);
+
+    // Cleanup listener
+    return () => {
+      window.removeEventListener('storage', updateCartCount);
+    };
+  }, []);
+
+
   const isAuthenticated = localStorage.getItem("authenticated") === "true";
 
   return (
-    <header className="bg-blue-600 text-white">
+    <header className="MainPageColor text-white">
       <div className="container mx-auto flex flex-wrap items-center justify-between py-4 px-4 md:px-8">
         {/* Logo */}
         <h1 className="text-xl font-bold">Product Management System</h1>
@@ -52,17 +77,29 @@ const Header = () => {
                 Products
               </Link>
             </li>
-            <li>
+            {/* <li>
+              <Link to="/cart" className="hover:underline relative">
+                Cart
+                {count > 0 && (
+                  <span className="absolute top-0 right-0 inline-block w-5 h-5 bg-red-600 ml-5 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    {count}
+                  </span>
+                )}
+              </Link>
+            </li> */}
+             <li className="relative">
               <Link to="/cart" className="hover:underline">
                 Cart
               </Link>
+              {count > 0 && (
+                <span className="cartCount top-0 right-0 h-5 w-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                  {count}
+                </span>
+              )}
             </li>
             {isAuthenticated ? (
               <li>
-                <button
-                  onClick={handleLogout}
-                  className="hover:underline"
-                >
+                <button onClick={handleLogout} className="hover:underline">
                   Logout
                 </button>
               </li>
